@@ -147,7 +147,7 @@ angular
       })
 
       ngModel.$validators.currency = function (modelValue) {
-        return !isNaN(modelValue)
+        return modelValue !== undefined && !isNaN(modelValue)
       }
 
       // manually trigger the $formatters pipeline
