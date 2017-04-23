@@ -110,7 +110,7 @@ angular
 
         var number = (Math.floor(util.toFloat(value) * 100) / 100).toFixed(2)
 
-        if (ngModel.$validators.currency(number)) {
+        if (number !== 'NaN' && ngModel.$validators.currency(number)) {
 
           var formatted = filter(number)
           var specialCharacters = util.uniqueChars(number, formatted)
@@ -142,7 +142,7 @@ angular
           element[0].setSelectionRange(selectonRange[0], selectonRange[1])
         }
 
-        return number
+        return number === 'NaN' && value === '' ? null : number;
 
       })
 
